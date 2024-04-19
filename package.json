@@ -36,7 +36,7 @@
     "@contentful/live-preview": "^3.0.0",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@next/bundle-analyzer": "^13.0.4",
+    "@next/bundle-analyzer": "^14.2.2",
     "@next/font": "13.0.5",
     "@svgr/webpack": "^6.5.1",
     "dotenv": "^16.0.3",
