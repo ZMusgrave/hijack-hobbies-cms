@@ -34,14 +34,9 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {
   try {
     const gqlClient = preview ? previewClient : client;
-    console.log('gqlCLIENT IN THE SERVER SIDE PROPS');
     const data = await gqlClient.pageLanding({ locale, preview });
 
-    console.log('\n\n\ndata:', data, '\n\n');
-
     const page = data.pageLandingCollection?.items[0];
-
-    console.log('\n\n\npage:', page, '\n\n');
 
     if (!page) {
       return {
