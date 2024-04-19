@@ -1,16 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useTranslation } from 'next-i18next';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
 import { ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
-import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { t } = useTranslation();
   const page = useContentfulLiveUpdates(props.page);
 
   return (
@@ -25,7 +22,7 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             lg: 16,
           }}>
           <ProductTileGrid
-            title={t('product.trendingProducts')}
+            title={'product.trendingProducts'}
             products={page.productsCollection.items}
           />
         </Box>
@@ -37,10 +34,14 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
 export const getServerSideProps: GetServerSideProps = async ({ locale, preview }) => {
   try {
     const gqlClient = preview ? previewClient : client;
-
+    console.log('gqlCLIENT IN THE SERVER SIDE PROPS');
     const data = await gqlClient.pageLanding({ locale, preview });
 
+    console.log('\n\n\ndata:', data, '\n\n');
+
     const page = data.pageLandingCollection?.items[0];
+
+    console.log('\n\n\npage:', page, '\n\n');
 
     if (!page) {
       return {
@@ -50,7 +51,6 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, preview }
 
     return {
       props: {
-        ...(await getServerSideTranslations(locale)),
         page,
       },
     };

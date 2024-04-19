@@ -1,15 +1,12 @@
 import { Box } from '@chakra-ui/react';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useTranslation } from 'next-i18next';
 
 import { ProductDetails, ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
-import { getServerSideTranslations } from '@src/pages/utils/get-serverside-translations';
 
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { t } = useTranslation();
   const product = useContentfulLiveUpdates(props.product);
 
   return (
@@ -24,7 +21,7 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             lg: 16,
           }}>
           <ProductTileGrid
-            title={t('product.relatedProducts')}
+            title={'product.relatedProducts'}
             products={product.relatedProductsCollection.items}
           />
         </Box>
@@ -54,7 +51,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, locale, p
 
     return {
       props: {
-        ...(await getServerSideTranslations(locale)),
         product,
       },
     };
