@@ -1,99 +1,32 @@
-# Contentful Ecommerce Starter Template
-
-An Ecommerce Starter Template powered by Next.js & Contentful, pre-designed with optimized & adjustable pages, components, and data management.
-
-![The homepage of the Ecommerce Starter Template](ecommerce-starter-template.jpg 'The homepage of the Ecommerce Starter Template')
-
-$~$
-
-## What is Contentful?
-
-[Contentful](https://www.contentful.com/) provides content infrastructure for digital teams to power websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management, and delivery APIs, and a customizable web app that enables developers and content creators to ship their products faster.
-
-$~$
-
-## DISCLAIMER ⚠️
-
-The Starter Templates experience is currently only available to new users.
-
-To benefit from this experience, please follow this link to create a new
-account and select the template to install: [https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template](https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
-
-Alternatively, to immediately start the auto installation of this template after creating a new account, please follow this link:
-[https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce](https://www.contentful.com/starter-templates/ecommerce-website/sign-up/?action=create_starter_template&template_name=ecommerce&utm_source=github.com&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs).
-
-$~$
-
-## Begin your journey with Contentful and the Ecommerce Starter Template
-
-Follow this [guide](https://github.com/contentful/template-ecommerce-webapp-nextjs/blob/main/docs/tutorials/contentful-and-the-starter-template.md/?utm_source=github.com-guide&utm_medium=referral&utm_campaign=template-ecommerce-webapp-nextjs) to understand the relationship between
-Contentful and the Starter Template source code through guided steps:
-
-- Entry editing, and updates preview in the Starter Template application (online/locally)
-- Content type editing in the Contentful web app, as well as in the Starter Template's code
-
-$~$
-
-## Features
-
-- Composable content through powerful & flexible content modeling.
-- Localization ready.
-- SEO ready.
-- Server-side rendering with Next.js[^1].
-- Generation of GraphQL[^2] typed code (schema, and types), in sync with the content types through graphql-codegen[^3].
-- Enhanced Developer Experience with TypeScript[^4].
-
-$~$
+# Hijack Hobbies
 
 ## Getting started
 
 To get started, read the following guidelines.
 
-- [Environment variables](./README.md#environment-variables)
-- [Dependencies](./README.md#dependencies)
-- [Development](./README.md#development)
-- [Contentful API & GraphQL](./README.md#contentful-api--graphql)
-- [Deployment](./README.md#deployment)
-
-$~$
-
-### Environment variables
-
-In order to authenticate the requests to the Contentful APIs, the following values are necessary:
-
-- Your space ID: [https://www.contentful.com/help/find-space-id/](https://www.contentful.com/help/find-space-id/)
-- Contentful Delivery API token: [https://www.contentful.com/developers/docs/references/content-delivery-api/](https://www.contentful.com/developers/docs/references/content-delivery-api/)
-- Contentful Preview API token: [https://www.contentful.com/developers/docs/references/content-preview-api/](https://www.contentful.com/developers/docs/references/content-preview-api/)
-
-Rename the `.env.example` file to `.env` and add the necessary values.
-
-$~$
-
 ### Dependencies
 
 To install the necessary dependencies, run:
 
-```bash
-yarn
+```zsh
+yarn install
+```
+
+Followed by:
+
+```zsh
+yarn build
 ```
 
 ### Run the Starter Template in development mode
 
-```bash
+```zsh
 yarn dev
 ```
 
-The Starter Template should be up and running on `http://localhost:3000`.
+The application is now active at [localhost:3000](http://localhost:3000 'Hijack Hobbies - RC Store').
 
 All necessary dependencies are installed under `node_modules` and any necessary tools can be accessed via npm scripts.
-
-$~$
-
-## Development
-
-### Node
-
-It is recommended to use the Node version listed in the `.nvmrc` file, we recommend using [nvm](https://github.com/nvm-sh/nvm) to easily switch between Node versions.
 
 $~$
 
@@ -184,18 +117,13 @@ $~$
 
 ## Deployment
 
-The Starter Template can be deployed to your hosting provider of choice.
+Deployment occurs using the CI/CD process with Github.
 
-We offer integrations with Vercel and Netlify to speed up the process by clicking one of the deploy buttons below. The GitHub repository and
-the necessary environment variables keys are pre-configured in the hosting provider space.
+In order to preview your changes, push all local commits to the remote branch and create a merge request.
 
-| Vercel                                                                                                                                                                                                                                                                                                                                                                                                                         | Netlify                                                                                                                                                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs&env=CONTENTFUL_SPACE_ID,CONTENTFUL_ACCESS_TOKEN,CONTENTFUL_PREVIEW_ACCESS_TOKEN&envDescription=API%20Keys%20needed%20for%20the%20application&envLink=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs%23environment-variables) | [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https%3A%2F%2Fgithub.com%2Fcontentful%2Ftemplate-ecommerce-webapp-nextjs#CONTENTFUL_SPACE_ID=&CONTENTFUL_ACCESS_TOKEN=&CONTENTFUL_PREVIEW_ACCESS_TOKEN=) |
-| [Environment variables docs](https://vercel.com/docs/concepts/projects/environment-variables)                                                                                                                                                                                                                                                                                                                                  | [Environment variables docs](https://docs.netlify.com/environment-variables/overview/)                                                                                                                                                                                                |
+An open merge request creates a preview environment through the Vercel integration
 
-Make sure to add the necessary [environment variables values](./README.md#environment-variables) to the hosting provider
-environment variables.
+Successfully merging a pull request will push the new production branch to Vercel before becoming live.
 
 ---
 
@@ -229,22 +157,6 @@ For custom components, you can find the instructions at our [guide](https://www.
 $~$
 
 ---
-
-$~$
-
-## Support
-
-If you have a problem with this Starter Template, post a message in our [Contentful Community Slack](https://www.contentful.com/slack/).
-
-Can't find your answer there? You can file a feedback issue through [this template](https://github.com/contentful/template-ecommerce-webapp-nextjs/tree/main/.github/ISSUE_TEMPLATE/feedback.md).
-
-If you have other problems with Contentful not related to the Starter Template, you can contact the [Customer Support](https://support.contentful.com/).
-
-$~$
-
-## Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 $~$
 
